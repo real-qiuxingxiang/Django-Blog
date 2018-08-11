@@ -1,0 +1,19 @@
+<header id="header">
+    <div class="container">
+        <a id="brand" href="/">
+            <strong>Q's Blog</strong>
+        </a>
+
+        <nav id="nav">
+
+            <a href="{% url 'index' %}" title="Home">Home</a>
+            <a href="{% url 'tag_list' %}" title="Tag">Tag</a>
+            <a href="{% url 'about' %}" title="About">About</a>
+        </nav>
+
+        <form class="search" id="searchform" method="get" action="{% url 'haystack_search' %}">
+              <input type="search" name="q" placeholder="搜索" required>
+              <button type="submit"></button>
+        </form>
+    </div>
+</header>

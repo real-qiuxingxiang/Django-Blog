@@ -1,0 +1,34 @@
+<h3>Comments</h3>
+<ol class="comment-list">
+      {% for comment in comment_list %}
+      <li class="comment-item">
+        <span class="nickname">{{ comment.name }}</span>
+        <time class="submit-date">{{ comment.created_time }}</time>
+        <div class="text">
+          {{ comment.text }}
+        </div>
+      </li>
+      {% empty %}
+      暂无评论
+      {% endfor %}
+</ol>
+
+
+<h3>Leave a Comment</h3>
+<form id='comment_form' action="{% url 'comments:post_comment' blog.pk %}" method="post" class="comment-form">
+  {% csrf_token %}
+  <p><label for="{{ form.name.id_for_label }}">名字：</label>
+  {{ form.name }}
+  {{ form.name.errors }}</p>
+  <p><label for="{{ form.email.id_for_label }}">邮箱：</label>
+  {{ form.email }}
+  {{ form.email.errors }}</p>
+  <p><label for="{{ form.url.id_for_label }}">URL：</label>
+  {{ form.url }}
+  {{ form.url.errors }}</p>
+  <p><label for="{{ form.text.id_for_label }}">评论：</label>
+  {{ form.text }}
+  {{ form.text.errors }}</p>
+  <button id="submit" class="comment-btn">发表</button>
+</form>
+

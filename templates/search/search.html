@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}搜索结果 - Q's Blog{% endblock %}
+
+{% block content %}
+
+    <div id="main" class="container X">
+        <h1>搜索结果：</h1>
+        <ul class="entry-list" role="main">
+            {% if query %}
+                {% for result in page.object_list %}
+                    <li class="entry-item" itemscope="" itemtype="http://schema.org/Article">
+                        <div class="entry-meta">
+                            <time class="updated" itemprop="datePublished">{{ result.object.created_time }}</time>
+                        </div>
+                        <h2 class="detail">
+                                <a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a>
+                        </h2>
+                        {% empty %}
+                            <div class="no-post">没有搜索到你想要的结果！</div>
+                    </li>
+                {% endfor %}
+                {% if page.has_previous or page.has_next %}
+                    <div>
+                        {% if page.has_previous %}
+                            <a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous
+                        {% if page.has_previous %}</a>{% endif %}
+                        |
+                        {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next
+                        &raquo;{% if page.has_next %}</a>{% endif %}
+                    </div>
+                {% endif %}
+                {% else %}
+                    请输入搜索关键词，例如 django
+            {% endif %}
+        </ul>
+    </div>
+
+{% endblock %}

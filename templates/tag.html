@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Tag - Q's Blog{% endblock %}
+
+{% block content %}
+
+    <div id="main" class="container X">
+        <div class="entry-header">
+            <div class="container">
+                <h1>All Tags:</h1>
+                <ul>
+                    {% for tag in tags %}
+                    <li>
+                        <h3><a href="{% url 'tag_detail' tag.id %}">{{ tag.name }}</a></h3>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% include 'comment.html' %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

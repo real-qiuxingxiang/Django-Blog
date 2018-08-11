@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}{{ blog.title }} - Q's Blog{% endblock %}
+
+{% block content %}
+
+    <article id="main" role="main" class="blog X" itemscope="" itemtype="http://schema.org/Article">
+        <div class="entry-header">
+            <div class="container">
+                <h1 class="entry-title" itemprop="name">{{ blog.title }}</h1>
+                <div class="entry-meta">
+                    <time class="created_date" itemprop="datePublished">{{ blog.created_time }}</time>
+                    <span class="author">
+                        <a class="url" href="/about">
+                        <strong class="fn" itemprop="author">Q</strong>
+                        </a>
+                    </span>
+                    <span class="views">
+                        <strong class="fn">点击量: </strong>{{ blog.views }}
+                    </span>
+                    <span class="tag">
+                        <strong class="fn">Tags: </strong>
+                        {% for tag in blog.tags.all %}
+                                <a href="{% url 'tag_detail' tag.id %}">{{ tag.name }}</a>
+                        {% endfor %}
+                    </span>
+                </div>
+            </div>
+            <div class="entry-content container" itemprop="articleBody">
+                {{ blog.content|safe }}
+                {% include 'comment.html' %}
+            </div>
+        </div>
+    </article>
+
+{% endblock %}

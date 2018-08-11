@@ -1,0 +1,5 @@
+/blog/migrations/
+/comments/migrations/
+/whoosh_index/
+/venv/
+/.idea/
