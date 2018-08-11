@@ -28,6 +28,18 @@
             </div>
             <div class="entry-content container" itemprop="articleBody">
                 {{ blog.content|safe }}
+                <div id="pre_and_next">
+                    {% if pre_blog %}
+                        <a class="pre" href="{% url 'blog_detail' pre_blog.id %}">上一篇：{{ pre_blog.title }}</a>
+                    {% else %}
+                        <a class="pre">上一篇：没有啦</a>
+                    {% endif %}
+                    {% if next_blog %}
+                        <a class="next" href="{% url 'blog_detail' next_blog.id %}">下一篇：{{ next_blog.title }}</a>
+                    {% else %}
+                        <a class="next">下一篇：没有啦</a>
+                    {% endif %}
+                </div>
                 {% include 'comment.html' %}
             </div>
         </div>

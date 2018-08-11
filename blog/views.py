@@ -28,14 +28,19 @@ class BlogDetailView(DetailView):
         return blog
 
     def get_context_data(self, **kwargs):
-        # 覆写 get_context_data 的目的是因为除了将 post 传递给模板外（DetailView 已经帮我们完成），
-        # 还要把评论表单、post 下的评论列表传递给模板。
         context = super(BlogDetailView, self).get_context_data(**kwargs)
         form = CommentForm()
         comment_list = self.object.comment_set.all()
+
+        temp = Blog.objects.get(id=self.kwargs.get('pk'))
+        pre_blog = temp.pre_blog()
+        next_blog = temp.next_blog()
+
         context.update({
             'form': form,
-            'comment_list': comment_list
+            'comment_list': comment_list,
+            'pre_blog': pre_blog,
+            'next_blog': next_blog,
         })
         return context
 

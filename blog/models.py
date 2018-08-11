@@ -33,5 +33,11 @@ class Blog(models.Model):
     def get_absolute_url(self):
         return "/blog/" + str(self.id)
 
+    def pre_blog(self):
+        return Blog.objects.filter(id__lt=self.id).first()
+
+    def next_blog(self):
+        return Blog.objects.filter(id__gt=self.id).first()
+
     def __str__(self):
         return self.title

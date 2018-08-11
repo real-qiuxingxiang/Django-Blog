@@ -984,3 +984,17 @@ body {
 .search button {
     visibility: hidden;
 }
+
+#pre_and_next .pre {
+    float: left;
+}
+
+#pre_and_next .next {
+    float: right;
+}
+
+#pre_and_next:after {
+	display: table;
+	content: "";
+	clear: both
+}
