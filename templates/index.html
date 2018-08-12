@@ -5,18 +5,23 @@
 {% block content %}
 
     <div id="main" class="container X">
-        <ul class="entry-list" role="main">
-            {% for blog in blogs %}
-                <li class="entry-item" itemscope="" itemtype="http://schema.org/Article">
-                    <div class="entry-meta">
-                        <time class="updated" itemprop="datePublished">{{ blog.created_time }}</time>
-                    </div>
-                    <div class="detail">
-                        <h2 itemprop="name"><a itemprop="url" href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a></h2>
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
+        {% regroup blogs by created_time.year as year_sorted_blogs %}
+            <ul>
+                {% for year in year_sorted_blogs %}
+                    <li class="entry-item">{{ year.grouper }} 年</li>
+                    {% for blog in year.list %}
+                        <li class="entry-item" itemscope="" itemtype="http://schema.org/Article">
+                            <div class="entry-meta">
+                                <time class="updated" itemprop="datePublished">{{ blog.created_time.date }}</time>
+                                <span itemprop="name"><a itemprop="url" href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a></span>
+                            </div>
+                            <div class="detail">
+
+                            </div>
+                        </li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
     </div>
 
 {% endblock %}
