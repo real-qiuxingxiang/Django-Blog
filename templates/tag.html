@@ -5,19 +5,23 @@
 {% block content %}
 
     <div id="main" class="container X">
-        <div class="entry-header">
-            <div class="container">
-                <h1>All Tags:</h1>
-                <ul>
-                    {% for tag in tags %}
-                    <li>
-                        <h3><a href="{% url 'tag_detail' tag.id %}">{{ tag.name }}</a></h3>
+        <ul>
+            {% for tag, blogs in tags_dic.items %}
+                <li class="entry-item">{{ tag }}</li>
+                {% for blog in blogs %}
+                    <li class="entry-item" itemscope="" itemtype="http://schema.org/Article">
+                        <div class="entry-meta">
+                            <time class="updated" itemprop="datePublished">{{ blog.created_time.date }}</time>
+                            <span itemprop="name"><a itemprop="url" href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a></span>
+                        </div>
+                        <div class="detail">
+
+                        </div>
                     </li>
-                    {% endfor %}
-                </ul>
-                {% include 'comment.html' %}
-            </div>
-        </div>
+                {% endfor %}
+                <br>
+            {% endfor %}
+        </ul>
     </div>
 
 

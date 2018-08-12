@@ -144,7 +144,10 @@
 }
 
 .X ul {
-	list-style-type: none
+	list-style-type: none;
+    position: relative;
+    right: 10%;
+    left: 10%;
 }
 
 .X ol {
@@ -152,7 +155,7 @@
 }
 
 .X li {
-	margin-bottom: .2em
+	margin-bottom: .2em;
 }
 
 .X li ul,.X li ol {

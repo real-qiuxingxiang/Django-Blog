@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.conf.urls import *
-from blog.views import TagListView, BlogListView, TagDetailView, RSSFeed, BlogDetailView
+from blog.views import *
 import xadmin
 from django.conf import settings
 from django.conf.urls.static import static
@@ -16,11 +16,11 @@ urlpatterns = [
     url(r'^$', BlogListView.as_view(), name='index'),
 
     # Tag
-    url(r'^tag/$', TagListView.as_view(), name='tag_list'),
+    url(r'^tag/$', TagView.as_view(), name='tag_list'),
     url(r'^tag/(?P<id>[a-zA-Z0-9])+/$', TagDetailView.as_view(), name='tag_detail'),
 
     # About
-    url(r'^about/', BlogListView.as_view(), name='about'),
+    url(r'^about/', about, name='about'),
 
     # RSS
     url(r'^feed/$', RSSFeed(), name="RSS"),
@@ -30,6 +30,7 @@ urlpatterns = [
 
     # Haystack Search
     url(r'^search/', include('haystack.urls')),
+
     url(r'', include('comments.urls')),
 ]
 

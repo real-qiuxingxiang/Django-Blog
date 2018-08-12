@@ -10,6 +10,9 @@ from comments.forms import CommentForm
 #    blog.count_views()
 #    return render(request, 'blog.html', context={'blog': blog})
 
+def about(request):
+    return render(request, 'about.html')
+
 
 class BlogListView(ListView):
     model = Blog
@@ -45,10 +48,22 @@ class BlogDetailView(DetailView):
         return context
 
 
-class TagListView(ListView):
-    model = Tag
-    context_object_name = 'tags'
+class TagView(ListView):
+    model = Blog
+    context_object_name = 'tag_list'
     template_name = 'tag.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(TagView, self).get_context_data(**kwargs)
+        tags_dic = {}
+        tags = Tag.objects.all()
+
+        for tag in tags:
+            tags_dic[tag.name] = list(Blog.objects.get_queryset().filter(tags=tag).values('id', 'title', 'created_time'))
+
+        context['tags_dic'] = tags_dic
+        print(context['tags_dic'])
+        return context
 
 
 class TagDetailView(ListView):
