@@ -4,13 +4,13 @@
 
 - Python 3.7 和 Django 2.1
 - MySQL
-- xadmin后台管理
-- Simditor Markdown 编辑器，图片 Drag and Drop 上传
+- [xadmin](https://github.com/sshwsfc/xadmin) 后台管理
+- [Simditor Markdown](https://github.com/istommao/django-simditor) 编辑器，图片 Drag and Drop 上传
 - 纯 CSS 前端
 - RSS订阅
 - 标签
-- haystack文章内容搜索
-- 一级文章评论（TODO：多级评论）
+- [haystack](https://github.com/django-haystack/django-haystack) 文章内容搜索
+- [Valine](https://github.com/xCss/Valine) 评论系统
 
 Usage:
 
@@ -68,6 +68,6 @@ python manage.py rebuild_index
 
 ![admin](/github_pic/admin.png)
 
-### Simditor Mardown 文章编辑器 图片上传
+### Simditor Markdown 文章编辑器 图片上传
 
 ![pic_upload](/github_pic/pic_upload.png)
