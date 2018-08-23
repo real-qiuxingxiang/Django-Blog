@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "compressor",
     'haystack',
     'xadmin',
     'crispy_forms',
@@ -133,7 +134,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'compressor.finders.CompressorFinder',
+)
+COMPRESS_OFFLINE = True
+COMPRESS_ENABLED = True
 # Static ROOT (CSS, JavaScript, Images)
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -157,8 +164,8 @@ SIMDITOR_IMAGE_BACKEND = 'pillow'
 SIMDITOR_TOOLBAR = [
     'title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale',
     'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link',
-    'image', 'hr', '|', 'indent', 'outdent', 'alignment',
-    'markdown', 'emoji', 'checklist', 'fullscreen'
+    'image', 'hr', '|', 'indent', 'outdent', 'alignment', 'fullscreen',
+    'markdown',
 ]
 
 SIMDITOR_CONFIGS = {
@@ -166,9 +173,5 @@ SIMDITOR_CONFIGS = {
     'upload': {
         'url': '/simditor/upload/',
         'fileKey': 'upload'
-    },
-    'emoji': {
-        'imagePath': '/static/simditor/images/emoji/'
-    },
-    'is_api': True
+    }
 }

@@ -6,11 +6,12 @@
 - MySQL
 - [xadmin](https://github.com/sshwsfc/xadmin) 后台管理
 - [Simditor Markdown](https://github.com/istommao/django-simditor) 编辑器，图片 Drag and Drop 上传
-- 纯 CSS 前端
+- 代码高亮
 - RSS订阅
-- 标签
+- 标签、阅读量
 - [haystack](https://github.com/django-haystack/django-haystack) 文章内容搜索
 - [Valine](https://github.com/xCss/Valine) 评论系统
+- 集成 django-compressor，静态文件压缩
 
 Usage:
 
@@ -36,33 +37,36 @@ python manage.py migrate
 ```
 
 - 创建管理员
+
 ```
 python manage.py createsuperuser
 ```
+
 - 创建搜索索引
+
 ```
 python manage.py rebuild_index
 ```
+
+- 压缩静态文件
+
+```
+python manage.py collectstatic
+python manage.py compress
+```
 ------
+
 ### 首页
 
 ![index](/github_pic/index.png)
 
-### 详情页
+### 详情页 + 评论
 
 ![detail](/github_pic/detail.png)
 
-### 评论
-
-![comments](/github_pic/comments.png)
-
 ### Tag List
 
-![tag_list](/github_pic/tag_list.png)
-
-### Tag Detail
-
-![tag_detail](/github_pic/tag_detail.png)
+![tag_list](/github_pic/tag.png)
 
 ### xadmin后台
 

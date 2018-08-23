@@ -1,12 +1,14 @@
 {% load static %}
-
+{% load compress %}
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    {% compress css %}
     <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'code.css' %}" rel="stylesheet">
+    {% endcompress %}
     <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
     <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
     <title>{% block title %}{% endblock %}</title>
