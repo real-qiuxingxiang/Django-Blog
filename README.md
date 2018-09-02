@@ -2,7 +2,7 @@
 
 基于 Django 开发的博客系统:
 
-- Python 3.7 和 Django 2.1
+- Python 3.7 和 Django 2.1.1
 - MySQL
 - [xadmin](https://github.com/sshwsfc/xadmin) 后台管理
 - [Simditor Markdown](https://github.com/istommao/django-simditor) 编辑器，图片 Drag and Drop 上传
@@ -39,7 +39,9 @@ python manage.py migrate
 - 创建管理员
 
 ```
-python manage.py createsuperuser
+python manage.py shell  
+from django.contrib.auth.models import User  
+user=User.objects.create_superuser('用户名','邮箱','密码')
 ```
 
 - 创建搜索索引
