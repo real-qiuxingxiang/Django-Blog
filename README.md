@@ -2,7 +2,7 @@
 
 基于 Django 开发的博客系统:
 
-- Python 3.7 和 Django 2.1.1
+- Python 3.6.6 和 Django 2.1.4
 - MySQL
 - [xadmin](https://github.com/sshwsfc/xadmin) 后台管理
 - [Simditor Markdown](https://github.com/istommao/django-simditor) 编辑器，图片 Drag and Drop 上传
