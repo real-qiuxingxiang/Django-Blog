@@ -3,7 +3,7 @@ cffi==1.11.5
 cryptography==2.4.2
 defusedxml==0.5.0
 diff-match-patch==20181111
-Django==2.1.5
+Django==2.1.15
 django-appconf==1.0.2
 django-compressor==2.2
 django-crispy-forms==1.7.2
